@@ -1,5 +1,6 @@
 // Modules
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 
 // Components
 import { ToastContainer } from "react-toastify";
@@ -10,7 +11,15 @@ import IPAddressResultInfoBox from "./IPAddressResult/IPAddressResultInfoBox";
 // Assets
 import "react-toastify/dist/ReactToastify.css";
 
-const App = () => {
+// Actions
+import { searchIpAddress } from "../actions";
+
+const App = ({ searchIpAddress }) => {
+  useEffect(() => {
+    // Dispatch an action to fetch ip address details using user pulic ip address
+    searchIpAddress();
+  }, [searchIpAddress]);
+
   return (
     <>
       <header className="header">
@@ -30,4 +39,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default connect(null, { searchIpAddress })(App);

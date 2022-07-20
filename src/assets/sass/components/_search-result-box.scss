@@ -1,11 +1,17 @@
 .search-result-box {
   background-color: getColor("light");
-  margin-top: 70px;
+  margin-top: 60px;
   border-radius: 8px;
-  padding: 2.3rem;
+  padding: 2.5rem;
   box-shadow: 0px 5px 7px 0px hsl(0, 0%, 59%);
   position: relative;
   z-index: 2;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+
+  @include respond(tab-port) {
+    grid-template-columns: 1fr;
+    row-gap: 1rem;
+    margin-top: 20px;
+  }
 }

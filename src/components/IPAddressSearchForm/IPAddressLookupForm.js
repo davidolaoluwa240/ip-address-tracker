@@ -1,5 +1,7 @@
 // Modules
 import React, { useState } from "react";
+import { toast } from "react-toastify";
+import { connect } from "react-redux";
 
 // Components
 import Field from "./Field";
@@ -8,11 +10,30 @@ import Button from "../Button/Button";
 // Assets
 import CarretRightIcon from "../../assets/images/icon-arrow.svg";
 
-const AddressLookupForm = () => {
+// Actions
+import { searchIpAddress } from "../../actions";
+
+const AddressLookupForm = ({ searchIpAddress }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const onSearchSubmit = function (e) {
     e.preventDefault();
+
+    // Validate input value
+    if (!searchTerm) {
+      toast("Enter a ip address or domain to continue");
+      return;
+    }
+
+    // Dispatch an action to fetch term
+    if (!Number(searchTerm[0])) {
+      searchIpAddress({ params: { domain: searchTerm } });
+    } else {
+      searchIpAddress({ params: { ipAddress: searchTerm } });
+    }
+
+    // Reset input
+    setSearchTerm("");
   };
 
   return (
@@ -41,4 +62,4 @@ const AddressLookupForm = () => {
   );
 };
 
-export default AddressLookupForm;
+export default connect(null, { searchIpAddress })(AddressLookupForm);

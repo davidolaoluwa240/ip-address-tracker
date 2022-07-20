@@ -5,42 +5,9 @@
   }
 }
 
-// BACKGROUND
-@each $name, $value in $colors {
-  .bg-#{$name} {
-    background-color: $value;
-  }
-}
-
-// WEIGHT
-@each $name, $value in $weights {
-  .is-text-#{$name} {
-    font-weight: $value;
-  }
-}
-
-// FONT SIZE
-@each $name, $value in $font-sizes {
-  .is-text-#{$name} {
-    font-size: $value;
-  }
-}
-
 // TEXT ALIGNMENT
 .is-text-center {
   text-align: center;
-}
-
-.is-text-right {
-  text-align: right;
-}
-
-.is-text-left {
-  text-align: left;
-}
-
-.is-text-justify {
-  text-align: justify;
 }
 
 // HIDE
@@ -48,34 +15,9 @@
   display: none;
 }
 
-.visibility-hidden {
-  visibility: hidden;
-}
-
 // SHOW
 .d-block {
   display: block;
-}
-
-.visibility-visible {
-  visibility: visible;
-}
-
-// TEXT TRANSFORMER
-.is-upper {
-  text-transform: uppercase;
-}
-
-.is-lower {
-  text-transform: lowercase;
-}
-
-.is-capitalize {
-  text-transform: capitalize;
-}
-
-.is-text-italic {
-  font-style: italic;
 }
 
 // LAYOUT
@@ -84,4 +26,12 @@
   height: 100%;
   margin-left: auto;
   margin-right: auto;
+
+  @include respond(tab-port) {
+    max-width: 500px;
+  }
+
+  @include respond(phone) {
+    max-width: 86%;
+  }
 }

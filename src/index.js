@@ -11,8 +11,11 @@ import App from "./components/App";
 // Assets
 import "./assets/sass/main.scss";
 
+// Reducers
+import reducers from "./reducers/index";
+
 const enhancedCompose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(() => {}, enhancedCompose(applyMiddleware(thunk)));
+const store = createStore(reducers, enhancedCompose(applyMiddleware(thunk)));
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

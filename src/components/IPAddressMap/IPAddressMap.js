@@ -1,5 +1,5 @@
 // Modules
-import React, { useState } from "react";
+import React from "react";
 import L from "leaflet";
 
 // Components
@@ -11,23 +11,22 @@ import markerIcon from "../../assets/images/icon-location.svg";
 const IPAddressMap = () => {
   const locationPinIcon = new L.Icon({
     iconUrl: markerIcon,
-    iconAnchor: null,
-    popupAnchor: null,
-    shadowUrl: null,
-    shadowSize: null,
-    shadowAnchor: null,
     iconSize: new L.Point(46, 56),
   });
-  const [position] = useState([51.505, -0.09]);
 
   return (
     <>
-      <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
+      <MapContainer
+        center={[51.505, -0.09]}
+        zoom={13}
+        zoomControl={false}
+        scrollWheelZoom={false}
+      >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          url="https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png"
         />
-        <Marker position={position} icon={locationPinIcon}></Marker>
+        <Marker position={[51.505, -0.09]} icon={locationPinIcon}></Marker>
       </MapContainer>
     </>
   );

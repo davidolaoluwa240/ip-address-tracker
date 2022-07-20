@@ -1,8 +1,13 @@
 .search-result-box-item {
+  @include respond(tab-port) {
+    text-align: center;
+  }
+
   &__heading {
     color: getColor("secondary-color");
     font-weight: 500;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
     margin-bottom: 0.6rem;
   }
 
