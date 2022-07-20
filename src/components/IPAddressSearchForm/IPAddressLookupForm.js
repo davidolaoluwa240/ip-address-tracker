@@ -11,9 +11,9 @@ import Button from "../Button/Button";
 import CarretRightIcon from "../../assets/images/icon-arrow.svg";
 
 // Actions
-import { searchIpAddress } from "../../actions";
+import { getIpAddress } from "../../actions/searchActions";
 
-const AddressLookupForm = ({ searchIpAddress }) => {
+const AddressLookupForm = ({ getIpAddress }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const onSearchSubmit = function (e) {
@@ -27,9 +27,9 @@ const AddressLookupForm = ({ searchIpAddress }) => {
 
     // Dispatch an action to fetch term
     if (!Number(searchTerm[0])) {
-      searchIpAddress({ params: { domain: searchTerm } });
+      getIpAddress({ params: { domain: searchTerm } });
     } else {
-      searchIpAddress({ params: { ipAddress: searchTerm } });
+      getIpAddress({ params: { ipAddress: searchTerm } });
     }
 
     // Reset input
@@ -62,4 +62,4 @@ const AddressLookupForm = ({ searchIpAddress }) => {
   );
 };
 
-export default connect(null, { searchIpAddress })(AddressLookupForm);
+export default connect(null, { getIpAddress })(AddressLookupForm);

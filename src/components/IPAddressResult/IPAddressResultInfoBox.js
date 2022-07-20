@@ -1,27 +1,40 @@
 // Modules
 import React from "react";
+import { connect } from "react-redux";
 
 // Components
 import IPAddressResultBoxItem from "./IPAddressResultBoxItem";
 
-const temp = [
-  { title: "IP ADDRESS", content: "105.178.32.114" },
-  { title: "LOCATION", content: "Kigali Province, RW," },
-  { title: "TIMEZONE", content: "+02:00" },
-  { title: "ISP", content: "KT RWANDA NETWORK Ltd" },
-];
-const IPAddressResultInfoBox = () => {
+const IPAddressResultInfoBox = ({ searchDetails, loading }) => {
   return (
     <div className="search-result-box">
-      {temp.map((searchInfo) => (
+      {searchDetails.map((searchInfo) => (
         <IPAddressResultBoxItem
-          key={searchInfo.title}
-          title={searchInfo.title}
+          key={searchInfo.heading}
+          heading={searchInfo.heading}
           content={searchInfo.content}
+          loading={loading}
         />
       ))}
     </div>
   );
 };
 
-export default IPAddressResultInfoBox;
+const mapStateToProps = function (state) {
+  const { loading, searchDetail } = state.search;
+
+  // Re-Compute Search Detail
+  const searchDetails = [
+    { heading: "IP ADDRESS", content: searchDetail?.ip },
+    {
+      heading: "LOCATION",
+      content: searchDetail?.address,
+    },
+    { heading: "TIMEZONE", content: searchDetail?.location?.timezone },
+    { heading: "ISP", content: searchDetail?.isp },
+  ];
+
+  return { searchDetails, loading: loading };
+};
+
+export default connect(mapStateToProps)(IPAddressResultInfoBox);

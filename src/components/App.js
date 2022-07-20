@@ -12,13 +12,13 @@ import IPAddressResultInfoBox from "./IPAddressResult/IPAddressResultInfoBox";
 import "react-toastify/dist/ReactToastify.css";
 
 // Actions
-import { searchIpAddress } from "../actions";
+import { getIpAddress } from "../actions/searchActions";
 
-const App = ({ searchIpAddress }) => {
+const App = ({ getIpAddress }) => {
   useEffect(() => {
     // Dispatch an action to fetch ip address details using user pulic ip address
-    searchIpAddress();
-  }, [searchIpAddress]);
+    getIpAddress();
+  }, [getIpAddress]);
 
   return (
     <>
@@ -39,4 +39,4 @@ const App = ({ searchIpAddress }) => {
   );
 };
 
-export default connect(null, { searchIpAddress })(App);
+export default connect(null, { getIpAddress })(App);

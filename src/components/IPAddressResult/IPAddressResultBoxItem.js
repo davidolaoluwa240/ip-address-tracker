@@ -1,11 +1,22 @@
 // Modules
 import React from "react";
 
-const IPAddressResultBoxItem = ({ title, content }) => {
+// Components
+import { ThreeDots } from "react-loader-spinner";
+
+const IPAddressResultBoxItem = ({ heading, content, loading }) => {
   return (
     <div className="search-result-box-item">
-      <h3 className="search-result-box-item__heading">{title}</h3>
-      <p className="search-result-box-item__content">{content}</p>
+      <h3 className="search-result-box-item__heading">{heading}</h3>
+      {loading && (
+        <ThreeDots
+          height="20"
+          width="50"
+          color="hsl(0, 0%, 59%)"
+          ariaLabel="loading"
+        />
+      )}
+      {!loading && <p className="search-result-box-item__content">{content}</p>}
     </div>
   );
 };
