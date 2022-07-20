@@ -1,0 +1,48 @@
+$colors: (
+  "primary-color": hsl(0, 0%, 17%),
+  "secondary-color": hsl(0, 0%, 59%),
+  "light": #ffffff,
+  "dark": #000000,
+);
+
+$weights: (
+  "thin": 300,
+  "default": 400,
+  "thick": 500,
+  "extra-thick": 600,
+  "bold": 700,
+  "extra-bold": 800,
+  "bolder": 900,
+);
+
+$font-sizes: (
+  "extra-small": 1.3rem,
+  "small": 1.4rem,
+  "medium": 1.6rem,
+  "extra-medium": 1.6rem,
+  "large": 1.8rem,
+  "extra-large": 2.2rem,
+);
+
+$font-family: (
+  "font-family-normal": (
+    "Rubik",
+    sans-serif,
+  ),
+);
+
+$base-fonts: (
+  "default-font-size": 1.6rem,
+  "default-font-family":
+    map-get(
+      $map: $font-family,
+      $key: font-family-normal,
+    ),
+  "default-line-height": 22px,
+  "default-font-weight": 400,
+  "default-color":
+    map-get(
+      $map: $colors,
+      $key: dark,
+    ),
+);

@@ -1,0 +1,14 @@
+.search-result-box-item {
+  &__heading {
+    color: getColor("secondary-color");
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin-bottom: 0.6rem;
+  }
+
+  &__content {
+    font-weight: 700;
+    font-size: 1.7rem;
+    color: getColor("primary-color");
+  }
+}

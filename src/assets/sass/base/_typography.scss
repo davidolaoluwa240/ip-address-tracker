@@ -1,0 +1,13 @@
+body {
+  font-size: getBaseFont("default-font-size");
+  font-family: getBaseFont("default-font-family");
+  font-weight: getBaseFont("default-font-weight");
+  line-height: getBaseFont("default-line-height");
+  color: getBaseFont("default-color");
+}
+
+.heading-primary {
+  font-size: 2rem;
+  font-family: getFontFamily("font-family-normal");
+  font-weight: 400;
+}
