@@ -1,8 +1,4 @@
 .search-result-box-item {
-  @include respond(tab-port) {
-    text-align: center;
-  }
-
   &__heading {
     color: getColor("secondary-color");
     font-weight: 500;
@@ -15,5 +11,13 @@
     font-weight: 700;
     font-size: 1.7rem;
     color: getColor("primary-color");
+  }
+
+  @include respond(tab-port) {
+    text-align: center;
+    &__loader {
+      display: flex;
+      justify-content: center;
+    }
   }
 }
