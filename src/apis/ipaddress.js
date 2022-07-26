@@ -2,7 +2,7 @@
 import axios from "axios";
 
 // IPIFY Api Key
-const KEY = "at_DE8tYqiqJhmDbygGAQxrFe1EQOOXv";
+const KEY = "at_JAVmLybQS8O53CRNQVC6rjGftdowN";
 
 export default axios.create({
   baseURL: "https://geo.ipify.org",
