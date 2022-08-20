@@ -6,14 +6,15 @@ import thunk from "redux-thunk";
 
 // Components
 import { Provider } from "react-redux";
-import App from "./components/App";
-
-// Assets
-import "./assets/sass/main.scss";
+import App from "./app/App";
 
 // Reducers
 import reducers from "./reducers/index";
 
+// Assets
+import "./assets/sass/main.scss";
+
+// Configure Store
 const enhancedCompose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducers, enhancedCompose(applyMiddleware(thunk)));
 

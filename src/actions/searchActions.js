@@ -20,7 +20,7 @@ export const getIpAddress = function (params = {}) {
       const geocodingResponse = await geocoding.get("/geocode/v1/json", {
         params: { q: address },
       });
-      const { lat, lng } = geocodingResponse.data.results.pop().geometry;
+      const { lat, lng } = geocodingResponse.data.results?.pop()?.geometry;
       // Dispatch action to update search state
       dispatch({
         type: SEARCH_LOADED,

@@ -1,8 +1,8 @@
-// Modules
-import React from "react";
-
 // Components
 import { ThreeDots } from "react-loader-spinner";
+
+// Styles
+import "./ipaddressresultboxitem.styles.scss";
 
 const IPAddressResultBoxItem = ({ heading, content, loading }) => {
   return (

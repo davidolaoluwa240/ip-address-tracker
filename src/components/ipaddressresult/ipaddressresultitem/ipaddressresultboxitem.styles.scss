@@ -1,3 +1,8 @@
+// Abstracts
+@import "../../../assets/sass/abstracts/variables";
+@import "../../../assets/sass/abstracts/functions";
+@import "../../../assets/sass/abstracts/mixins";
+
 .search-result-box-item {
   &__heading {
     color: getColor("secondary-color");
@@ -15,6 +20,7 @@
 
   @include respond(tab-port) {
     text-align: center;
+
     &__loader {
       display: flex;
       justify-content: center;

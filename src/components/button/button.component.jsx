@@ -1,5 +1,5 @@
-// Modules
-import React from "react";
+// Assets
+import "./button.styles.scss";
 
 const Button = ({ children, arialLabel, className }) => {
   return (
@@ -7,6 +7,11 @@ const Button = ({ children, arialLabel, className }) => {
       {children}
     </button>
   );
+};
+
+Button.defaultProps = {
+  className: "",
+  arialLabel: "",
 };
 
 export default Button;

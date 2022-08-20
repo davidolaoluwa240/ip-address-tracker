@@ -1,23 +1,23 @@
 // Modules
-import React from "react";
 import { connect } from "react-redux";
 
 // Components
-import IPAddressResultBoxItem from "./IPAddressResultBoxItem";
+import IPAddressResultBoxItem from "../ipaddressresultitem/ipaddressresultboxitem.components";
+
+// Styles
+import "./ipaddressresultinfobox.styles.scss";
 
 const IPAddressResultInfoBox = ({ searchDetails, loading }) => {
-  return (
-    <div className="search-result-box">
-      {searchDetails.map((searchInfo) => (
-        <IPAddressResultBoxItem
-          key={searchInfo.heading}
-          heading={searchInfo.heading}
-          content={searchInfo.content}
-          loading={loading}
-        />
-      ))}
-    </div>
-  );
+  const renderedSearchDetails = searchDetails.map(({ heading, content }) => (
+    <IPAddressResultBoxItem
+      key={heading}
+      heading={heading}
+      content={content}
+      loading={loading}
+    />
+  ));
+
+  return <div className="search-result-box">{renderedSearchDetails}</div>;
 };
 
 const mapStateToProps = function (state) {

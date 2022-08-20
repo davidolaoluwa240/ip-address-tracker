@@ -1,18 +1,19 @@
 // Modules
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { connect } from "react-redux";
 
 // Components
 import { ToastContainer } from "react-toastify";
-import IPAddressLookupForm from "./IPAddressSearchForm/IPAddressLookupForm";
-import IPAddressMap from "./IPAddressMap/IPAddressMap";
-import IPAddressResultInfoBox from "./IPAddressResult/IPAddressResultInfoBox";
-
-// Assets
-import "react-toastify/dist/ReactToastify.css";
+import IPAddressLookupForm from "../components/ipaddresssearchform/ipaddresslookupform/ipaddresslookupform.component";
+import IPAddressMap from "../components/ipaddressmap/ipaddressmap.component";
+import IPAddressResultInfoBox from "../components/ipaddressresult/ipaddressresultinfobox/ipaddressresultinfobox.components";
 
 // Actions
 import { getIpAddress } from "../actions/searchActions";
+
+//Styles
+import "react-toastify/dist/ReactToastify.css";
+import "./App.styles.scss";
 
 const App = ({ getIpAddress }) => {
   useEffect(() => {

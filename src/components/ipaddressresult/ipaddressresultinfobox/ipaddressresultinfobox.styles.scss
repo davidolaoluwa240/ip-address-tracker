@@ -1,3 +1,8 @@
+// Abstracts
+@import "../../../assets/sass/abstracts/variables";
+@import "../../../assets/sass/abstracts/functions";
+@import "../../../assets/sass/abstracts/mixins";
+
 .search-result-box {
   background-color: getColor("light");
   margin-top: 60px;

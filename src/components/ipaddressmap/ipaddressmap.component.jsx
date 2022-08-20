@@ -1,30 +1,34 @@
 // Modules
-import React, { useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import L from "leaflet";
 import { connect } from "react-redux";
 
 // Components
 import { MapContainer, TileLayer, Marker } from "react-leaflet";
 
+// Styles
+import "./ipaddressmap.styles.scss";
+
 // Assets
 import markerIcon from "../../assets/images/icon-location.svg";
 
 const IPAddressMap = ({ position }) => {
   const mapRef = useRef();
+  const locationPinIcon = new L.Icon({
+    iconUrl: markerIcon,
+    iconSize: new L.Point(46, 56),
+  });
 
   useEffect(() => {
     if (mapRef.current) {
       mapRef.current.setView(position, mapRef.current.getZoom(), {
         animate: true,
-        easeLinearity: 0.35,
+        pan: {
+          duration: 300,
+        },
       });
     }
   }, [position]);
-
-  const locationPinIcon = new L.Icon({
-    iconUrl: markerIcon,
-    iconSize: new L.Point(46, 56),
-  });
 
   return (
     <>
@@ -47,7 +51,8 @@ const IPAddressMap = ({ position }) => {
 };
 
 const mapStateToProps = function (state) {
-  return { position: state.search.searchDetail.coords || [51.505, -0.09] };
+  const { coords: position = [51.505, -0.09] } = state.search.searchDetail;
+  return { position };
 };
 
 export default connect(mapStateToProps)(IPAddressMap);
