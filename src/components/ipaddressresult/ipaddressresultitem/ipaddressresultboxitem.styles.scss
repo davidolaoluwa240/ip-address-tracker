@@ -4,6 +4,12 @@
 @import "../../../assets/sass/abstracts/mixins";
 
 .search-result-box-item {
+  @include respond(tab-port) {
+    &:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+  }
+
   &__heading {
     color: getColor("secondary-color");
     font-weight: 500;

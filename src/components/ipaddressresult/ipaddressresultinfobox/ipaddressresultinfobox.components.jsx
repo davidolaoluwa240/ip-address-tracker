@@ -34,7 +34,7 @@ const mapStateToProps = function (state) {
     { heading: "ISP", content: searchDetail?.isp },
   ];
 
-  return { searchDetails, loading: loading };
+  return { searchDetails, loading };
 };
 
 export default connect(mapStateToProps)(IPAddressResultInfoBox);

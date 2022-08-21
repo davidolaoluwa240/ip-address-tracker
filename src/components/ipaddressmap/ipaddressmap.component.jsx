@@ -24,7 +24,7 @@ const IPAddressMap = ({ position }) => {
       mapRef.current.setView(position, mapRef.current.getZoom(), {
         animate: true,
         pan: {
-          duration: 300,
+          duration: 2,
         },
       });
     }
