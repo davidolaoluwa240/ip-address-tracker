@@ -7,7 +7,7 @@ import IPAddressResultBoxItem from "../ipaddressresultitem/ipaddressresultboxite
 // Styles
 import "./ipaddressresultinfobox.styles.scss";
 
-const IPAddressResultInfoBox = ({ searchDetails, loading }) => {
+export const IPAddressResultInfoBox = ({ searchDetails = [], loading }) => {
   const renderedSearchDetails = searchDetails.map(({ heading, content }) => (
     <IPAddressResultBoxItem
       key={heading}
@@ -36,5 +36,3 @@ const mapStateToProps = function (state) {
 
   return { searchDetails, loading };
 };
-
-export default connect(mapStateToProps)(IPAddressResultInfoBox);

@@ -1,29 +1,41 @@
-// Modules
+// Hooks
 import { useState } from "react";
 
-const useForm = function (validator, initState) {
-  const [ formState, setFormState ] = useState(initState);
+/**
+ * Use Form Hook
+ * @param {Function} validator Validation function to be executed on form submit
+ * @param {Object} initState Form initial state
+ * @returns {Object}
+ */
+export const useForm = (validator, initState) => {
+  const [formState, setFormState] = useState(initState);
 
-  // Reset the entire form state
+  /**
+   * Reset Form State
+   */
   const resetFormState = function () {
     setFormState(initState);
   };
 
-  //  OnSubmit call validator and call the callback function
-  const onSubmit = (callback) => {
-    return function (e) {
-      e.preventDefault();
-      const valid = validator(formState);
-      valid && callback(formState, resetFormState, e);
-    };
+  /**
+   * Submit Form Data
+   * @param {Function} callback Function to be executed when user submit
+   * @returns {Function} Submit handler
+   */
+  const onSubmit = (callback) => (e) => {
+    e.preventDefault();
+    const valid = validator(formState);
+    valid && callback(formState, resetFormState, e);
   };
 
-  // Update Form State
+  /**
+   * Update Form State
+   * @param {InputEvent} e Event
+   */
   const onInputChange = (e) => {
-    setFormState({ ...formState, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormState({ ...formState, [name]: value });
   };
 
   return { onSubmit, onInputChange, formState };
 };
-
-export default useForm;

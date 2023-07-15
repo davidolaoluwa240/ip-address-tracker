@@ -12,7 +12,7 @@ import "./ipaddressmap.styles.scss";
 // Assets
 import markerIcon from "../../assets/images/icon-location.svg";
 
-const IPAddressMap = ({ position }) => {
+export const IPAddressMap = ({ position }) => {
   const mapRef = useRef();
   const locationPinIcon = new L.Icon({
     iconUrl: markerIcon,
@@ -54,5 +54,3 @@ const mapStateToProps = function (state) {
   const { coords: position = [51.505, -0.09] } = state.search.searchDetail;
   return { position };
 };
-
-export default connect(mapStateToProps)(IPAddressMap);
