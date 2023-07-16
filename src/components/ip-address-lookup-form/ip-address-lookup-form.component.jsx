@@ -3,15 +3,16 @@ import React from "react";
 import { toast } from "react-toastify";
 
 // Hooks
-import { useForm } from "../../../hooks";
-
-// Components
-import Field from "../../field/field.component";
-import Button from "../../button/button.component";
-import { ReactComponent as CarretRightIconSvg } from "../../../assets/images/icon-arrow.svg";
+import { useForm } from "../../hooks";
 
 // Style
-import "./ipaddresslookupform.styles";
+import {
+  IPAddressLookupFormControl,
+  IPAddressLookupFormWrapper,
+  IPAddressLookupFormGroup,
+  IPAddressLookupFormButton,
+  StyledCarretRightIconSvg,
+} from "./ip-address-lookup-form.styles";
 
 // Form Initial State
 const SEARCH_INITIAL_STATE = {
@@ -63,28 +64,22 @@ export const IPAddressLookupForm = () => {
   };
 
   return (
-    <form
-      className="search-form"
+    <IPAddressLookupFormWrapper
       autoComplete="off"
       onSubmit={onSubmit(onSearchSubmit)}
     >
-      <div className="search-form__group">
-        <Field
-          className="search-form__control"
+      <IPAddressLookupFormGroup>
+        <IPAddressLookupFormControl
           type="text"
           name="searchTerm"
           placeholder="Search for any IP address or domain name"
           value={formState.searchTerm}
           onChange={onInputChange}
         />
-        <Button className="search-form__btn" type="submit">
-          {/* <img
-            src={CarretRightIcon}
-            className="search-form__btn-icon"
-            alt="search"
-          /> */}
-        </Button>
-      </div>
-    </form>
+        <IPAddressLookupFormButton type="submit">
+          <StyledCarretRightIconSvg aria-label="search" />
+        </IPAddressLookupFormButton>
+      </IPAddressLookupFormGroup>
+    </IPAddressLookupFormWrapper>
   );
 };

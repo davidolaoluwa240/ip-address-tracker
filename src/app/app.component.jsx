@@ -5,8 +5,8 @@ import React from "react";
 import { Fragment } from "react";
 import {
   IPAddressLookupForm,
+  IPAddressLookupResultBox,
   IPAddressMap,
-  IPAddressResultInfoBox,
   ToastContainer,
 } from "../components";
 
@@ -26,7 +26,7 @@ export const App = () => {
         <AppHeaderContainer>
           <AppHeaderHeading>IP Address Tracker</AppHeaderHeading>
           <IPAddressLookupForm />
-          <IPAddressResultInfoBox />
+          <IPAddressLookupResultBox />
         </AppHeaderContainer>
       </AppHeader>
 

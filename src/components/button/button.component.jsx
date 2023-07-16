@@ -1,17 +1,13 @@
-// Assets
-import "./button.styles.scss";
+// Modules
+import React from "react";
 
-const Button = ({ children, arialLabel, className }) => {
+// Style
+import { ButtonBase } from "./button.styles";
+
+export const Button = ({ children, color, ...restProps }) => {
   return (
-    <button className={`btn btn--primary ${className}`} aria-label={arialLabel}>
+    <ButtonBase $color={color} {...restProps}>
       {children}
-    </button>
+    </ButtonBase>
   );
 };
-
-Button.defaultProps = {
-  className: "",
-  arialLabel: "",
-};
-
-export default Button;

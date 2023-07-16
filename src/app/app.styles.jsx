@@ -61,6 +61,8 @@ export const AppHeaderHeading = styled.h1`
   text-align: center;
 `;
 
-export const AppMain = styled.main``;
+export const AppMain = styled.main`
+  height: 100%;
+`;
 
 export { Container as AppHeaderContainer };
