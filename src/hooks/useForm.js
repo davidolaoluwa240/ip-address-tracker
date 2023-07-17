@@ -22,10 +22,10 @@ export const useForm = (validator, initState) => {
    * @param {Function} callback Function to be executed when user submit
    * @returns {Function} Submit handler
    */
-  const onSubmit = (callback) => (e) => {
+  const onSubmit = (callback) => async (e) => {
     e.preventDefault();
     const valid = validator(formState);
-    valid && callback(formState, resetFormState, e);
+    valid && (await callback(formState, resetFormState, e));
   };
 
   /**

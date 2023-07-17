@@ -6,7 +6,7 @@ import { Fragment } from "react";
 import {
   IPAddressLookupForm,
   IPAddressLookupResultBox,
-  IPAddressMap,
+  IPAddressLookupResultMap,
   ToastContainer,
 } from "../components";
 
@@ -31,7 +31,7 @@ export const App = () => {
       </AppHeader>
 
       <AppMain>
-        <IPAddressMap />
+        <IPAddressLookupResultMap />
       </AppMain>
 
       {/* Register Toast Container */}

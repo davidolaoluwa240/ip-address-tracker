@@ -3,7 +3,7 @@ import React from "react";
 import { toast } from "react-toastify";
 
 // Hooks
-import { useForm } from "../../hooks";
+import { useForm, useIpAddress } from "../../hooks";
 
 // Style
 import {
@@ -24,6 +24,7 @@ export const IPAddressLookupForm = () => {
     validateForm,
     SEARCH_INITIAL_STATE
   );
+  const { lookupIpAddress } = useIpAddress();
 
   /**
    * Validate Form
@@ -51,13 +52,12 @@ export const IPAddressLookupForm = () => {
    * @param {Object} formData Form fields data
    * @param {Function} resetForm Function To Reset Form Fields
    */
-  const onSearchSubmit = (formData, resetForm) => {
+  const onSearchSubmit = async (formData, resetForm) => {
     // 1). Get Search Term
     const { searchTerm } = formData;
 
     // 2). Search Ip Address Location Info
-    // lookupIpAddress(searchTerm);
-    console.log(searchTerm);
+    await lookupIpAddress(searchTerm);
 
     // 3). Reset Form Fields
     resetForm();
