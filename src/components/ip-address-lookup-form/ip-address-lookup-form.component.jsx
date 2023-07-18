@@ -1,6 +1,7 @@
 // Modules
 import React from "react";
 import { toast } from "react-toastify";
+import { isIP } from "is-ip";
 
 // Hooks
 import { useForm, useIpAddress } from "../../hooks";
@@ -35,20 +36,34 @@ export const IPAddressLookupForm = () => {
     // 1). Get Search Term
     const { searchTerm } = formData;
 
-    // 2). If Search Term Is Undefined Toast An Error And Return False
-    if (!searchTerm) {
-      toast.error("Enter an ip address or domain name to continue", {
-        position: toast.POSITION.BOTTOM_CENTER,
-      });
+    // 2).  Sanitize Search Term
+    const searchTermSantized = searchTerm.trim();
+
+    // 3). Create Error Message
+    let errorMessage;
+
+    // 4). Update Error Message If Search Term Is Undefined
+    if (!searchTermSantized) {
+      errorMessage = "Enter An IP Address To Get Started";
+    }
+
+    // 5). Update Error Message If Enter Ip Address Is Invalid
+    if (searchTermSantized && !isIP(searchTermSantized)) {
+      errorMessage = "Wrong or Invalid IP Address";
+    }
+
+    // 6). Toast Error Message If It Exist And Return False To Cancel Form Submission
+    if (errorMessage) {
+      toast.error(errorMessage);
       return false;
     }
 
-    // 3). Return True If the Search Term Is Not Undefined
+    // 7). Return True To Submit Form
     return true;
   }
 
   /**
-   * Perform Ip Address/Domain Lookup
+   * Perform Ip Address Lookup
    * @param {Object} formData Form fields data
    * @param {Function} resetForm Function To Reset Form Fields
    */
@@ -57,7 +72,7 @@ export const IPAddressLookupForm = () => {
     const { searchTerm } = formData;
 
     // 2). Search Ip Address Location Info
-    await lookupIpAddress(searchTerm);
+    await lookupIpAddress(searchTerm.trim());
 
     // 3). Reset Form Fields
     resetForm();
@@ -72,7 +87,7 @@ export const IPAddressLookupForm = () => {
         <IPAddressLookupFormControl
           type="text"
           name="searchTerm"
-          placeholder="Search for any IP address or domain name"
+          placeholder="Search for any IP address"
           value={formState.searchTerm}
           onChange={onInputChange}
         />

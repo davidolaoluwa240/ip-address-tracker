@@ -2,10 +2,8 @@
 import React from "react";
 
 // Hooks
-import { useMemo, useContext } from "react";
-
-// Contexts
-import { IPAddressContext } from "../../context";
+import { useMemo } from "react";
+import { useIpAddress } from "../../hooks";
 
 // Components
 import { IPAddressLookupResultItem } from "../";
@@ -14,7 +12,7 @@ import { IPAddressLookupResultItem } from "../";
 import { IPAddressLookupResultBoxWrapper } from "./ip-address-lookup-result-box.styles";
 
 export const IPAddressLookupResultBox = () => {
-  const { searchResult, isLoading } = useContext(IPAddressContext);
+  const { searchResult, isLoading } = useIpAddress();
 
   // Create Enhanced Search Results
   const enhancedSearchResults = useMemo(
@@ -22,10 +20,10 @@ export const IPAddressLookupResultBox = () => {
       { title: "IP ADDRESS", content: searchResult?.ip },
       {
         title: "LOCATION",
-        content: searchResult?.address,
+        content: `${searchResult?.city}, ${searchResult?.region}, ${searchResult?.country}`,
       },
-      { title: "TIMEZONE", content: searchResult?.location?.timezone },
-      { title: "ISP", content: searchResult?.isp },
+      { title: "TIMEZONE", content: `UTC: ${searchResult?.timezone?.utc}` },
+      { title: "ISP", content: searchResult?.connection?.isp },
     ],
     [searchResult]
   );

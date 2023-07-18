@@ -19,7 +19,7 @@ export const IPAddressProvider = ({ children }) => {
   const [error, setError] = useState(null);
 
   /**
-   * Search Ip Address or Domain Details
+   * Search Ip Address Info
    * @param {string|undefined} searchTerm Search query
    */
   const lookupIpAddress = async (searchTerm) => {
@@ -34,7 +34,7 @@ export const IPAddressProvider = ({ children }) => {
       setSearchResult(data);
     } catch (err) {
       // 4). Update Error State
-      setError(err.data);
+      setError(err.message);
     } finally {
       // 5). Stop Loading
       setIsLoading(false);
